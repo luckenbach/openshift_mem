@@ -1,4 +1,6 @@
+#!/bin/python
 from __future__ import division
+
 import bitmath
 import requests
 import json
@@ -43,7 +45,7 @@ def check_node():
 
 
 	# get pod specific info for the node
-	r = requests.get('{0}/api/v1/pods?fieldSelector=spec.nodeName%3D{1}%2Cstatus.phase%21%3DFailed%2Cstatus.phase%21%3DSucceeded'.format(arg.master, arg.node), verify=False, headers=headers)
+	r = requests.get('{0}/api/v1/pods?fieldSelector=spec.nodeName%3D{1}%2Cstatus.phase%21%3DFailed%2Cstatus.phase%21%3DSucceeded'.format(args.master, args.node), verify=False, headers=headers)
 
 	try:
 	    r.raise_for_status()
@@ -72,7 +74,9 @@ def check_node():
 		      cpu_val = int(cpu_val)
 		  req_cpu.append(cpu_val)
 		  # Memory
-		  req_mem.append(bitmath.parse_string(mem_val + 'B'))
+                  p_mem = bitmath.parse_string(mem_val + 'B')
+		  req_mem.append(p_mem.MB)
+                    
 
 
 	# Sum them up
