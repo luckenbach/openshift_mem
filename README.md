@@ -12,8 +12,8 @@ pip install -r requirements.txt
 # Preparing OpenShift
 
 * Install the following RPMs from the EPEL repo
-  * yum install python-requests
-  * yum install python2-bitmath
+  * `yum install python-requests`
+  * `yum install python2-bitmath`
 * Copy the file ./monitor.py into `/usr/local/bin` and `chmod +x /usr/local/bin/monitor.py`
 * As a user with cluster-admin permissions:
   * Create a service account to use
