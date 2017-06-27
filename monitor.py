@@ -85,7 +85,7 @@ def check_node():
 
 
 	# Get percent of
-	print 100 * int(total_req_mem) / int(node_mem.MB)
+	print round((100 * int(total_req_mem) / int(node_mem.MB)), 2)
 
 if __name__ == '__main__':
   check_node()
